@@ -38,25 +38,6 @@
         <input type="radio" name="attr_toggle_npc" value="99" class="toggle-npc tab-hidden tab" title="Sheet Settings" /><span class="material-icons custom-btn-nav"></span>
       </section>
       <!-- Announcements -->
-      <section class="announcements-box">
-        <span class="pc-npc">
-          <span class="inline-label" title="@{is_npc} | Indicates that the sheet is either a PC or NPC/Monster.">
-            <input type="radio" class="width-smallest is-pc" name="attr_is_npc" value="0" checked /><span></span>
-            <input type="radio" class="width-smallest is-npc" name="attr_is_npc" value="1" /><span></span>
-          </span>
-        </span>
-        <input type="checkbox" class="sect-show" name="attr_toggle_announcements" value="1" title="Open to read about important sheet changes." checked />
-        <span class="header announcements-title">i</span><span class="material-icons"></span>
-        <div class="sect announcements">
-          <h4>Important Sheet Announcements</h4>
-          <h5 class="right two-columns">
-            <span class="left">
-              <span>v.<span name="attr_sheet_version">
-            </span>
-            <span class="right">6/2/24'</span>
-          </h5>
-        </div>
-      </section>
     </section>
     <!-- NPC/Monster statblock1-4 -->
     <section class="npc-box statblock1">
@@ -1320,7 +1301,7 @@
             </button>
           </label>
           <span class="two-columns">
-            <label class="label-percent">
+            <label class="inline-label">
               <input type="text" class="width-smallest" name="attr_minorstrengthfeat" title="@{minorstrengthfeat} | Minor Strength Feat: uses the highest # from STR table." value="0">
             </label>
             <input type="checkbox" class="hidden exceptional" name="attr_exceptional_strength_flag" value="1" />
@@ -2902,8 +2883,8 @@
                 <summary>
                   <span class="material-icons custom-btn-nav toggle-critdamage"></span>
                   <input type="text" class="width-medium" name="attr_weapon_damagesmallmedium" title="@{repeating_weapon_$X_weapon_damagesmallmedium}" value="" placeholder="1d4" />
-                  <button class="text-only hide-as-npc" type="roll" name="roll_weapon_damagesmallmedium_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_roll} | PC Roll" value="@{weapon_damagesmallmedium_macro_text}"><span class="dice-button nowrap">DMG S/M</span></button>
-                  <button class="text-only hide-as-pc" type="roll" name="roll_weapon_damagesmallmedium_npc_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_npc_roll} | NPC Roll" value="@{weapon_damagesmallmedium_macro_npc_text}"><span class="dice-button nowrap">DMG S/M</span></button>
+                  <button class="text-only hide-as-npc" type="roll" name="roll_weapon_damagesmallmedium_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_roll} | PC Roll" value="@{weapon_damagesmallmedium_macro_text}"><span class="dice-button nowrap">DMG</span></button>
+                  <button class="text-only hide-as-pc" type="roll" name="roll_weapon_damagesmallmedium_npc_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_npc_roll} | NPC Roll" value="@{weapon_damagesmallmedium_macro_npc_text}"><span class="dice-button nowrap">DMG</span></button>
 
                   <input type="hidden" name="attr_weapon_damagesmallmedium_chat_menu" value="" />
                   <input type="hidden" name="attr_weapon_critdamagesmallmedium_chat_menu" value="" />
@@ -2925,32 +2906,7 @@
                   <textarea class="height-short toggle-macros" name="attr_weapon_critdamagesmallmedium" title="@{repeating_weapon_$X_weapon_critdamagesmallmedium} | Crit Damage roll in lieu of normal damage roll.  Defaults to x2 of the weapon's normal damage. ie @{weapon_damagesmallmedium}*2">@{weapon_damagesmallmedium}*2</textarea>
                 </label>
               </details>
-              <details class="large-damage">
-                <summary>
-                  <span class="material-icons custom-btn-nav toggle-critdamage"></span>
-                  <input type="text" class="width-medium" name="attr_weapon_damagelarge" title="@{repeating_weapon_$X_weapon_damagelarge}" value="" placeholder="1d6" />
-                  <button class="text-only hide-as-npc" type="roll" name="roll_weapon_damagelarge_roll" title="%{repeating_weapon_$X_weapon_damagelarge_roll} | PC Roll" value="@{weapon_damagelarge_macro_text}"><span class="dice-button nowrap">DMG LG</span></button>
-                  <button class="text-only hide-as-pc" type="roll" name="roll_weapon_damagelarge_npc_roll" title="%{repeating_weapon_$X_weapon_damagelarge_npc_roll} | NPC Roll" value="@{weapon_damagelarge_macro_npc_text}"><span class="dice-button nowrap">DMG LG</span></button>
-                  <input type="hidden" name="attr_weapon_damagelarge_chat_menu" value="" />
-                  <input type="hidden" name="attr_weapon_critdamagelarge_chat_menu" value="" />
-                  <!--NPC version-->
-                  <input type="hidden" name="attr_weapon_damagelarge_npc_chat_menu" value="" />
-                  <input type="hidden" name="attr_weapon_critdamagelarge_npc_chat_menu" value="" />
-
-                  <textarea class="hidden" name="attr_weapon_damagelarge_macro_text">@{whisper_pc} &{template:attacks} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=@{weapon_name}}} {{damage1vsL=[[ (@{weapon_damagelarge}) * @{weapon_backstab_mult}[MULT] + ( @{weapon_attackdmgbonus}[DMG_BON] ) + ( @{weapon_magicbonus}[MAG_BON] ) + ( ?{Damage Modifier?|0}[MISC_MOD] ) ]]}} {{backstab=[[ @{weapon_backstab_mult} ]]}} {{damagetype=@{weapon_attackdmgtype}}}</textarea>
-
-                  <textarea class="hidden" name="attr_weapon_critdamagelarge_macro_text">@{whisper_pc} &{template:attacks} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=@{weapon_name}}} {{damage1vsL=[[ (@{weapon_critdamagelarge}) * @{weapon_backstab_mult}[MULT] + ( @{weapon_attackdmgbonus}[DMG_BON] ) + ( @{weapon_magicbonus}[MAG_BON] ) + ( ?{Damage Modifier?|0}[MISC_MOD] ) ]]}} {{backstab=[[ @{weapon_backstab_mult} ]]}} {{damagetype=@{weapon_attackdmgtype}}} {{crit=[[ @{toggle_critdamage} ]]}}</textarea>
-                  <!--NPC version-->
-                  <textarea class="hidden" name="attr_weapon_damagelarge_macro_npc_text">@{whisper_npc} &{template:attacks} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=@{weapon_name}}} {{damage1vsL=[[ (@{weapon_damagelarge}) * @{weapon_backstab_mult}[MULT] + ( @{weapon_attackdmgbonus}[DMG_BON] ) + ( @{weapon_magicbonus}[MAG_BON] ) + ( ?{Damage Modifier?|0}[MISC_MOD] ) ]]}} {{backstab=[[ @{weapon_backstab_mult} ]]}} {{damagetype=@{weapon_attackdmgtype}}}</textarea>
-
-                  <textarea class="hidden" name="attr_weapon_critdamagelarge_macro_npc_text">@{whisper_npc} &{template:attacks} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=@{weapon_name}}} {{damage1vsL=[[ (@{weapon_critdamagelarge}) * @{weapon_backstab_mult}[MULT] + ( @{weapon_attackdmgbonus}[DMG_BON] ) + ( @{weapon_magicbonus}[MAG_BON] ) + ( ?{Damage Modifier?|0}[MISC_MOD] ) ]]}} {{backstab=[[ @{weapon_backstab_mult} ]]}} {{damagetype=@{weapon_attackdmgtype}}} {{crit=[[ @{toggle_critdamage} ]]}}</textarea>
-                </summary>
-                <label class="label-under toggle-critdamage">
-                  <button class="text-only hide-as-npc" type="roll" name="roll_weapon_critdamagelarge_roll" title="%{repeating_weapon_$X_weapon_critdamagelarge_roll} | PC Roll" value="@{weapon_critdamagelarge_macro_text}"><span class="dice-button nowrap">Roll Crit</span></button>
-                  <button class="text-only hide-as-pc" type="roll" name="roll_weapon_critdamagelarge_npc_roll" title="%{repeating_weapon_$X_weapon_critdamagelarge_npc_roll} | NPC Roll" value="@{weapon_critdamagelarge_macro_npc_text}"><span class="dice-button nowrap">Roll Crit</span></button>
-                  <textarea class="height-short toggle-macros" name="attr_weapon_critdamagelarge" title="@{repeating_weapon_$X_weapon_critdamagelarge} | Crit Damage roll instead of normal damage roll.  Defaults to x2 of the weapon's normal damage. ie @{weapon_damagelarge}*2">@{weapon_damagelarge}*2</textarea>
-                </label>
-              </details>
+              
               <!--inserted into the NPC attack roll. Needed so that damage chat menu respects the whisper_npc setting-->
               <input type="hidden" name="attr_weapon_damage_chat_menu_npc" value="{{damagevsSMchatmenu=@{weapon_damagesmallmedium_npc_chat_menu}}} {{damagevsLchatmenu=@{weapon_damagelarge_npc_chat_menu}}} {{critdamagevsSMchatmenu=@{weapon_critdamagesmallmedium_npc_chat_menu}}} {{critdamagevsLchatmenu=@{weapon_critdamagelarge_npc_chat_menu}}}" />
               <label class="label-under-small toggle-backstab hide-if-ranged center">
@@ -2968,6 +2924,10 @@
               <label class="label-under-small" title="@{repeating_weapon_$X_weapon_attackdmgtype} | (P)iercing, (S)lashing, (B)ludgeoning, etc.">
                 <input type="text" class="width-medium" name="attr_weapon_attackdmgtype" value="" placeholder="-" />
                 <span>DMG Type</span>
+              </label>
+              <label class="label-under-small" title="@{repeating_weapon_$X_weapon_speed}">
+                <input type="text" class="width-small" name="attr_weapon_speed" title="@{repeating_weapon_$X_weapon_speed}" value="" placeholder="-" />
+                <span>Speed</span>
               </label>
               <label class="label-under-small hide-if-melee">
                 <input type="text" class="width-small" name="attr_weapon_rateoffire" title="@{repeating_weapon_$X_weapon_rateoffire}" value="" placeholder="-" />
@@ -3020,7 +2980,6 @@
             </summary>
             <span class="to-hit-adj-box">
               <span class="to-hit center">
-                <input type="text" class="width-small" name="attr_weapon_speed" title="@{repeating_weapon_$X_weapon_speed}" value="" placeholder="-" />
                 <input type="text" class="width-small" name="attr_weapon_length" title="@{repeating_weapon_$X_weapon_length}" value="" placeholder="-" />
                 <input type="text" class="width-small" name="attr_weapon_space" title="@{repeating_weapon_$X_weapon_space}" value="" placeholder="-" />
                 <input type="text" class="width-small" name="attr_weapon_misc" title="@{repeating_weapon_$X_weapon_misc}" value="" placeholder="-" />
@@ -3060,7 +3019,7 @@
               </span>
             </span>
             <textarea class="height-short" name="attr_weapon_notes" title="@{repeating_weapon_$X_weapon_notes}" placeholder="Description"></textarea>
-            <textarea class="height-short toggle-macros" name="attr_weapon_macro_text" title="@{repeating_weapon_$X_weapon_macro_text} | Caution: modifying the macro-text can break the roll.  Deleting the macro-text will safely reset the roll to the sheet's default macro.">&{template:attacks} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=@{weapon_name}}} {{dual=@{weapon_dual}}} {{attack1=[[ 1d20 + ( @{weapon_backstab_bonus}[BACKSTAB] ) + ( @{weapon_tohitbonus}[HIT_BON] ) + ( @{weapon_prof_pen}[PROF_PEN] ) + ( @{weapon_dual_pen}[DUAL_PEN] ) + ( @{weapon_magicbonus}[MAG_BON] ) + ( ?{To Hit Modifier?|0}[MISC_MOD] ) ]]}} {{damagevsSMchatmenu=@{weapon_damagesmallmedium_chat_menu}}} {{damagevsLchatmenu=@{weapon_damagelarge_chat_menu}}} {{critdamagevsSMchatmenu=@{weapon_critdamagesmallmedium_chat_menu}}} {{critdamagevsLchatmenu=@{weapon_critdamagelarge_chat_menu}}} {{WeaponNotes=@{weapon_notes}}} {{backstab=[[ @{weapon_backstab_mult} ]]}} {{damagetype=@{weapon_attackdmgtype}}} {{rate=@{weapon_rateoffire}}} {{range=@{weapon_range}}} {{length=@{weapon_length}}} {{space=@{weapon_space}}} {{speed=@{weapon_speed}}} {{ammo=[[ @{weapon_ammo} ]]/[[ @{weapon_ammo|max} ]]}} {{crit=[[ @{toggle_critdamage} ]]}} @{weapon_tohitacadj}</textarea>
+            <textarea class="height-short toggle-macros" name="attr_weapon_macro_text" title="@{repeating_weapon_$X_weapon_macro_text} | Caution: modifying the macro-text can break the roll.  Deleting the macro-text will safely reset the roll to the sheet's default macro.">&{template:attacks} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=@{weapon_name}}} {{attack1=[[1d20 + @{weapon_tohitbonus}[BON] + @{weapon_magicbonus}[MAG] + ?{To Hit Modifier?|0}[MOD] ]]}} {{damage=[[@{weapon_damagesmallmedium} + @{weapon_attackdmgbonus}[BON] + @{weapon_magicbonus}[MAG] + ?{Damage Modifier?|0}[MOD] ]]}} {{WeaponNotes=@{weapon_notes}}}</textarea>
           </details>
         </fieldset>
       </div>
@@ -3686,9 +3645,9 @@
           <span>Function</span>
           <span>TOTAL</span>
           <span></span>
-          <span>Base/Level</span>
+          <span>Base</span>
           <span></span>
-          <span>Dex Adj.</span>
+          <span>Level Adj.</span>
           <span></span>
           <span>Racial Adj.</span>
           <span></span>
@@ -3696,179 +3655,99 @@
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_pickpockets" title="%{selected|pickpockets}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Pick Pockets}} {{roll_high=[[ 1d20 + @{pickpockets} ]]}} {{roll_target= [[ 21 ]]}}"><span>Pick Pockets</span></button>
-          <label class="label-percent" title="@{pickpockets}">
             <input type="text" name="attr_pickpockets" class="field-border readonly-span" title="@{pickpockets}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_pickpockets_base" class="width-smaller" title="@{pickpockets_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_pickpockets_ability_mod" class="width-smaller" title="@{pickpockets_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_pickpockets_racial_mod" class="width-smaller" title="@{pickpockets_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_pickpockets_magic" class="width-smaller" title="@{pickpockets_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_openlocks" title="%{selected|openlocks}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Open Locks}} {{roll_high=[[ 1d20 + @{openlocks} ]]}} {{roll_target= [[ 21 ]]}}"><span>Open Locks</span></button>
-          <label class="label-percent" title="@{openlocks}">
             <input type="text" name="attr_openlocks" class="field-border readonly-span" title="@{openlocks}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_openlocks_base" class="width-smaller" title="@{openlocks_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_openlocks_ability_mod" class="width-smaller" title="@{openlocks_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_openlocks_racial_mod" class="width-smaller" title="@{openlocks_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_openlocks_magic" class="width-smaller" title="@{openlocks_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_findtraps" title="%{selected|findtraps}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Find/Remove Traps}} {{roll_high=[[ 1d20 + @{findtraps} ]]}} {{roll_target= [[ 21 ]]}}"><span>Find/Remove Traps</span></button>
-          <label class="label-percent" title="@{findtraps}">
             <input type="text" name="attr_findtraps" class="field-border readonly-span" title="@{findtraps}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_findtraps_base" class="width-smaller" title="@{findtraps_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_findtraps_ability_mod" class="width-smaller" title="@{findtraps_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_findtraps_racial_mod" class="width-smaller" title="@{findtraps_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_findtraps_magic" class="width-smaller" title="@{findtraps_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_movequietly" title="%{selected|movequietly}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Move Silently}} {{roll_high=[[ 1d20 + @{movequietly} ]]}} {{roll_target= [[ 21 ]]}}"><span>Move Silently</span></button>
-          <label class="label-percent" title="@{movequietly}">
             <input type="text" name="attr_movequietly" class="field-border readonly-span" title="@{movequietly}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_movequietly_base" class="width-smaller" title="@{movequietly_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_movequietly_ability_mod" class="width-smaller" title="@{movequietly_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_movequietly_racial_mod" class="width-smaller" title="@{movequietly_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_movequietly_magic" class="width-smaller" title="@{movequietly_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_hideinshadows" title="%{selected|HideInShadows}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Hide In Shadows}} {{roll_high=[[ 1d20 + @{hideinshadows} ]]}} {{roll_target= [[ 21 ]]}}"><span>Hide In Shadows</span></button>
-          <label class="label-percent" title="@{hideinshadows}">
             <input type="text" name="attr_hideinshadows" class="field-border readonly-span" title="@{hideinshadows}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_hideinshadows_base" class="width-smaller" title="@{hideinshadows_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_hideinshadows_ability_mod" class="width-smaller" title="@{hideinshadows_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_hideinshadows_racial_mod" class="width-smaller" title="@{hideinshadows_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_hideinshadows_magic" class="width-smaller" title="@{hideinshadows_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_hearnoise" title="%{selected|hearnoise}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Hear Noise}} {{roll_high=[[ 1d20 + @{hearnoise} ]]}} {{roll_target= [[ 21 ]]}}"><span>Hear Noise</span></button>
-          <label class="label-percent" title="@{hearnoise}">
             <input type="text" name="attr_hearnoise" class="field-border readonly-span" title="@{hearnoise}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_hearnoise_base" class="width-smaller" title="@{hearnoise_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_hearnoise_ability_mod" class="width-smaller" title="@{hearnoise_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_hearnoise_racial_mod" class="width-smaller" title="@{hearnoise_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_hearnoise_magic" class="width-smaller" title="@{hearnoise_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_climbwalls" title="%{selected|climbwalls}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Climb Walls}} {{roll_high=[[ 1d20 + @{climbwalls} ]]}} {{roll_target= [[ 21 ]]}}"><span>Climb Walls</span></button>
-          <label class="label-percent" title="@{climbwalls}">
             <input type="text" name="attr_climbwalls" class="field-border readonly-span" title="@{climbwalls}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_climbwalls_base" class="width-smaller" title="@{climbwalls_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_climbwalls_ability_mod" class="width-smaller" title="@{climbwalls_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_climbwalls_racial_mod" class="width-smaller" title="@{climbwalls_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_climbwalls_magic" class="width-smaller" title="@{climbwalls_magic}" value="0" />
-          </label>
         </span>
         <span class="thief-columns">
           <button class="text-only thiefskills-button" type="roll" name="roll_readlanguages" title="%{selected|readlanguages}" value="@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Read Languages}} {{roll_high=[[ 1d20 + @{readlanguages} ]]}} {{roll_target= [[ 21 ]]}}"><span>Read Languages</span></button>
-          <label class="label-percent" title="@{readlanguages}">
             <input type="text" name="attr_readlanguages" class="field-border readonly-span" title="@{readlanguages}" value="0" />
-          </label>
           <span class="text-large">=</span>
-          <label class="label-percent">
             <input type="text" name="attr_readlanguages_base" class="width-smaller" title="@{readlanguages_base}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_readlanguages_ability_mod" class="width-smaller" title="@{readlanguages_ability_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_readlanguages_racial_mod" class="width-smaller" title="@{readlanguages_racial_mod}" value="0" />
-          </label>
           <span class="text-large">±</span>
-          <label class="label-percent">
             <input type="text" name="attr_readlanguages_magic" class="width-smaller" title="@{readlanguages_magic}" value="0" />
-          </label>
         </span>
         <input type="checkbox" class="sect-show" name="attr_custom_function_show" value="1" />
         <span class="subheader">Custom Functions</span><span class="material-icons"></span>
@@ -3881,25 +3760,15 @@
               </summary>
               <input type="text" class="width-fill" name="attr_thiefmisc_name" title="@{thiefmisc_name}" value="Custom..." />
             </details>
-            <label class="label-percent" title="@{thiefmisc}">
               <input type="text" name="attr_thiefmisc" class="field-border readonly-span" title="@{thiefmisc}" value="0" />
-            </label>
             <span class="text-large">=</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc_base" class="width-smaller" title="@{thiefmisc_base}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc_ability_mod" class="width-smaller" title="@{thiefmisc_ability_mod}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc_racial_mod" class="width-smaller" title="@{thiefmisc_racial_mod}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc_magic" class="width-smaller" title="@{thiefmisc_magic}" value="0" />
-            </label>
           </span>
           <span class="thief-columns">
             <details>
@@ -3909,25 +3778,15 @@
               </summary>
               <input type="text" class="width-fill" name="attr_thiefmisc1_name" title="@{thiefmisc1_name}" value="Custom..." />
             </details>
-            <label class="label-percent" title="@{thiefmisc1}">
               <input type="text" name="attr_thiefmisc1" class="field-border readonly-span" title="@{thiefmisc1}" value="0" />
-            </label>
             <span class="text-large">=</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc1_base" class="width-smaller" title="@{thiefmisc1_base}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc1_ability_mod" class="width-smaller" title="@{thiefmisc1_ability_mod}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc1_racial_mod" class="width-smaller" title="@{thiefmisc1_racial_mod}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc1_magic" class="width-smaller" title="@{thiefmisc1_magic}" value="0" />
-            </label>
           </span>
           <span class="thief-columns">
             <details>
@@ -3937,25 +3796,15 @@
               </summary>
               <input type="text" class="width-fill" name="attr_thiefmisc2_name" title="@{thiefmisc2_name}" value="Custom..." />
             </details>
-            <label class="label-percent" title="@{thiefmisc2}">
               <input type="text" name="attr_thiefmisc2" class="field-border readonly-span" title="@{thiefmisc2}" value="0" />
-            </label>
             <span class="text-large">=</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc2_base" class="width-smaller" title="@{thiefmisc2_base}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc2_ability_mod" class="width-smaller" title="@{thiefmisc2_ability_mod}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc2_racial_mod" class="width-smaller" title="@{thiefmisc2_racial_mod}" value="0" />
-            </label>
             <span class="text-large">±</span>
-            <label class="label-percent">
               <input type="text" name="attr_thiefmisc2_magic" class="width-smaller" title="@{thiefmisc2_magic}" value="0" />
-            </label>
           </span>
         </div>
         <span class="thief-columns">
@@ -7948,7 +7797,7 @@
   on('change:pp change:gp change:ep change:sp change:cp change:toggle_lbs', (eventInfo) => {
     // clog(`Change Detected:${eventInfo.sourceAttribute}`);
     getAttrs(['pp', 'gp', 'ep', 'sp', 'cp', 'toggle_lbs'], (v) => {
-      const lbsConversion = +(v.toggle_lbs || 0) ? 10 : 1;
+      const lbsConversion = +(v.toggle_lbs || 0) ? 50 : 1;
       setAttrs({
         total_coin_weight: (Math.round((float(v.pp) + float(v.gp) + float(v.ep) + float(v.sp) + float(v.cp)) / 1) / lbsConversion).toFixed(2),
       });
