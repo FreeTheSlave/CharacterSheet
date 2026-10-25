@@ -1584,14 +1584,10 @@
         <label class="center">
           <select class="width-fill border" name="attr_saves_class" title="@{saves_class}">
             <option value="0" selected style="font-weight: bold;">~ Select a Class ~</option>
-            <option value="1">Cleric</option>
-            <option value="2">Druid</option>
-            <option value="3">Fighter, Paladin, or Ranger</option>
-            <option value="4">Magic-User or Illusionist</option>
-            <option value="5">Thief</option>
-            <option value="6">Monk</option>
-            <option value="7">Assassin</option>
-            <option value="8">Other 0-lvl Types</option>
+            <option value="1">Priest</option>
+            <option value="2">Mage</option>
+            <option value="3">Rogue</option>
+            <option value="4">Warrior</option>
           </select>
         </label>
         <label class="center">
@@ -2605,214 +2601,6 @@
           <input type="text" class="width-small" name="attr_weapon_in_use_misc" value="" placeholder="n/a" readonly />
         </label>
       </div>
-      <div class="sect" style="margin: 5px 0 22px 0;">
-        <input type="checkbox" class="hidden toggle-to-hit-table" name="attr_toggle_to_hit_table" value="1" />
-        <!-- To Hit Table-->
-        <details class="matrix-box">
-          <summary title="Enter To-Hit Armor Class Table data.">
-            <span class="material-icons grid"></span>
-            <span class="subheader label-matrix">Attack Matrix</span>
-            <span class="material-icons"></span>
-          </summary>
-          <div class="matrix-class section">
-            <label></label>
-            <label></label>
-            <label class="center">
-              <span>Class/Monster</span>
-            </label>
-            <input type="checkbox" name="attr_toggle_matrixhd" value="1" class="toggle-matrixhd hidden" />
-            <label class="matrix-level center">
-              <span>Level</span>
-            </label>
-            <label class="matrix-hd center" style="margin-left: -1em;">
-              <span>HD/Lvl</span>
-            </label>
-            <span></span>
-            <label class="inline-label" title="@{autofill_matrix} | Let the sheet auto-fill the to-hit tables when the class and level selectors are changed in the attack Matrix window.">
-              <input type="checkbox" name="attr_autofill_matrix" value="1" checked />
-              <h4>Autofill Table:</h4>
-            </label>
-            <label class="center width-large">
-              <select class="width-fill border" name="attr_matrix_class" title="@{matrix_class}">
-                <option value="0" selected style="font-weight: bold;">~ Select the Class or Monster ~</option>
-                <option value="1">Cleric, Druid or Monk</option>
-                <option value="2">Fighter, Paladin, Ranger or Bard</option>
-                <option value="3">Magic-User or Illusionist</option>
-                <option value="4">Thief or Assassin</option>
-                <option value="6">0-lvl Halfling or Human</option>
-                <option value="5">Monster</option>
-              </select>
-            </label>
-            <input type="checkbox" name="attr_toggle_matrixhd" value="1" class="toggle-matrixhd hidden" />
-            <label class="matrix-level center">
-              <input class="width-small border" type="number" min="0" name="attr_matrix_level" value="1" title="@{matrix_level}">
-            </label>
-            <label class="matrix-hd center" style="margin-left: -1em;">
-              <select class="width-small-plus border" name="attr_matrix_hitdice" title="@{matrix_hitdice}">
-                <option value="0" selected>Select HD/Lvl</option>
-                <option value="1">up to 1-1</option>
-                <option value="2">1-1</option>
-                <option value="3">1</option>
-                <option value="4">1+</option>
-                <option value="5">2-3+</option>
-                <option value="6">4-5+</option>
-                <option value="7">6-7+</option>
-                <option value="8">8-9+</option>
-                <option value="9">10-11+</option>
-                <option value="10">12-13+</option>
-                <option value="11">14-15+</option>
-                <option value="12">16+</option>
-              </select>
-            </label>
-          </div>
-          <div class="section center">
-            <span class="to-hit">
-              <span>-10</span>
-              <span>-9</span>
-              <span>-8</span>
-              <span>-7</span>
-              <span>-6</span>
-              <span>-5</span>
-              <span>-4</span>
-              <span>-3</span>
-              <span>-2</span>
-              <span>-1</span>
-              <span>0</span>
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-              <span>6</span>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </span>
-            <span class="to-hit-input">
-              <span><input type="text" name="attr_thac-10" title="@{thac-10}" value="20" /></span>
-              <span><input type="text" name="attr_thac-9" title="@{thac-9}" value="20" /></span>
-              <span><input type="text" name="attr_thac-8" title="@{thac-8}" value="20" /></span>
-              <span><input type="text" name="attr_thac-7" title="@{thac-7}" value="20" /></span>
-              <span><input type="text" name="attr_thac-6" title="@{thac-6}" value="20" /></span>
-              <span><input type="text" name="attr_thac-5" title="@{thac-5}" value="20" /></span>
-              <span><input type="text" name="attr_thac-4" title="@{thac-4}" value="20" /></span>
-              <span><input type="text" name="attr_thac-3" title="@{thac-3}" value="20" /></span>
-              <span><input type="text" name="attr_thac-2" title="@{thac-2}" value="20" /></span>
-              <span><input type="text" name="attr_thac-1" title="@{thac-1}" value="20" /></span>
-              <span><input type="text" name="attr_thac0" title="@{thac0}" value="20" /></span>
-              <span><input type="text" name="attr_thac1" title="@{thac1}" value="20" /></span>
-              <span><input type="text" name="attr_thac2" title="@{thac2}" value="20" /></span>
-              <span><input type="text" name="attr_thac3" title="@{thac3}" value="20" /></span>
-              <span><input type="text" name="attr_thac4" title="@{thac4}" value="20" /></span>
-              <span><input type="text" name="attr_thac5" title="@{thac5}" value="20" /></span>
-              <span><input type="text" name="attr_thac6" title="@{thac6}" value="20" /></span>
-              <span><input type="text" name="attr_thac7" title="@{thac7}" value="20" /></span>
-              <span><input type="text" name="attr_thac8" title="@{thac8}" value="20" /></span>
-              <span><input type="text" name="attr_thac9" title="@{thac9}" value="20" /></span>
-              <span><input type="text" name="attr_thac10" title="@{thac10}" value="20" /></span>
-            </span>
-          </div>
-        </details>
-        <!-- THAC0 Table-->
-        <details class="thac0-box">
-          <summary title="Enter THAC0 data">
-            <span class="material-icons grid"></span>
-            <span class="label-matrix">THAC0</span>
-            <span class="material-icons"></span>
-          </summary>
-          <div class="matrix-class section">
-            <label></label>
-            <label></label>
-            <label class="center"><span>Class/Monster</span></label>
-            <input type="checkbox" name="attr_toggle_matrixhd" value="1" class="toggle-matrixhd hidden" />
-            <label class="matrix-level center"><span>Level</span></label>
-            <label class="matrix-hd center" style="margin-left: -1em;"><span>HD/Lvl</span></label>
-            <span></span>
-            <h4>Autofill Table:</h4>
-            <label class="center width-large">
-              <select class="width-fill border" name="attr_matrix_class" title="@{matrix_class}">
-                <option value="0" selected style="font-weight: bold;">~ Select the Class or Monster ~</option>
-                <option value="1">Cleric, Druid or Monk</option>
-                <option value="2">Fighter, Paladin, Ranger or Bard</option>
-                <option value="3">Magic-User or Illusionist</option>
-                <option value="4">Thief or Assassin</option>
-                <option value="6">0-lvl Halfling or Human</option>
-                <option value="5">Monster</option>
-              </select>
-            </label>
-            <input type="checkbox" name="attr_toggle_matrixhd" value="1" class="toggle-matrixhd hidden" />
-            <label class="matrix-level center">
-              <input class="width-small border" type="number" min="0" name="attr_matrix_level" value="1" title="@{matrix_level}" />
-            </label>
-            <label class="matrix-hd center">
-              <select class="width-small-plus border" name="attr_matrix_hitdice" title="@{matrix_hitdice}">
-                <option value="0" selected>Select HD/Lvl</option>
-                <option value="1">up to 1-1</option>
-                <option value="2">1-1</option>
-                <option value="3">1</option>
-                <option value="4">1+</option>
-                <option value="5">2-3+</option>
-                <option value="6">4-5+</option>
-                <option value="7">6-7+</option>
-                <option value="8">8-9+</option>
-                <option value="9">10-11+</option>
-                <option value="10">12-13+</option>
-                <option value="11">14-15+</option>
-                <option value="12">16+</option>
-              </select>
-            </label>
-          </div>
-          <div class="sect center">
-            <span class="to-hit">
-              <span>-10</span>
-              <span>-9</span>
-              <span>-8</span>
-              <span>-7</span>
-              <span>-6</span>
-              <span>-5</span>
-              <span>-4</span>
-              <span>-3</span>
-              <span>-2</span>
-              <span>-1</span>
-              <span>0</span>
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-              <span>6</span>
-              <span>7</span>
-              <span>8</span>
-              <span>9</span>
-              <span>10</span>
-            </span>
-            <span class="to-hit-input">
-              <span><input type="text" name="attr_thac0-10" title="@{thac0-10}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-9" title="@{thac0-9}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-8" title="@{thac0-8}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-7" title="@{thac0-7}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-6" title="@{thac0-6}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-5" title="@{thac0-5}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-4" title="@{thac0-4}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-3" title="@{thac0-3}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-2" title="@{thac0-2}" value="20" /></span>
-              <span><input type="text" name="attr_thac0-1" title="@{thac0-1}" value="20" /></span>
-              <span><input type="text" name="attr_thac00" title="@{thac00}" value="20" style="font-weight:bold; border: 1px solid black;" /></span>
-              <span><input type="text" name="attr_thac01" title="@{thac01}" value="20" /></span>
-              <span><input type="text" name="attr_thac02" title="@{thac02}" value="20" /></span>
-              <span><input type="text" name="attr_thac03" title="@{thac03}" value="20" /></span>
-              <span><input type="text" name="attr_thac04" title="@{thac04}" value="20" /></span>
-              <span><input type="text" name="attr_thac05" title="@{thac05}" value="20" /></span>
-              <span><input type="text" name="attr_thac06" title="@{thac06}" value="20" /></span>
-              <span><input type="text" name="attr_thac07" title="@{thac07}" value="20" /></span>
-              <span><input type="text" name="attr_thac08" title="@{thac08}" value="20" /></span>
-              <span><input type="text" name="attr_thac09" title="@{thac09}" value="20" /></span>
-              <span><input type="text" name="attr_thac010" title="@{thac010}" value="20" /></span>
-            </span>
-          </div>
-        </details>
-      </div>
       <div class="sect">
         <input type="checkbox" class="hidden toggle-input-attention" name="attr_attack_matrix_flag" value="1" checked />
         <span class="material-icons" title="Attack tables have not been set!">nearby_error</span>
@@ -2822,9 +2610,9 @@
           <input type="checkbox" class="hidden" name="attr_weapon_critdamage_flag" value="1" />
           <div class="top-row border-top-half">
             <span class="weapons-row1 center">
-              <button class="dice-button hide-as-npc" type="roll" name="attr_weapon_attack_roll" title="%{selected|repeating_weapon_$X_weapon_attack_roll} | PC Roll" value="@{whisper_pc} @{weapon_macro_text} @{weapon_whisper_to_hit}"></button>
+              <button class="dice-button hide-as-npc" type="roll" name="attr_weapon_attack_roll" title="%{selected|repeating_weapon_$X_weapon_attack_roll} | PC Roll" value="@{whisper_pc} @{weapon_macro_text}"></button>
               <!--NPC version-->
-              <button class="dice-button hide-as-pc" type="roll" name="attr_weapon_attack_npc_roll" title="%{selected|repeating_weapon_$X_weapon_attack_npc_roll} | NPC Roll" value="@{whisper_npc} @{weapon_macro_text} @{weapon_damage_chat_menu_npc} @{weapon_whisper_to_hit}"></button>
+              <button class="dice-button hide-as-pc" type="roll" name="attr_weapon_attack_npc_roll" title="%{selected|repeating_weapon_$X_weapon_attack_npc_roll} | NPC Roll" value="@{whisper_npc} @{weapon_macro_text} @{weapon_damage_chat_menu_npc}"></button>
               <label class="label-under-small repeating-name">
                 <input type="text" class="text-large" name="attr_weapon_name" title="@{repeating_weapon_$X_weapon_name}" placeholder="Enter Weapon" />
                 <span>Name</span>
@@ -2959,15 +2747,6 @@
               <label class="label-under-small">
                 <input type="text" class="width-smaller" name="attr_weapon_quantity" value="1" title="@{repeating_weapon_$X_weapon_quantity}" />
                 <span>QTY</span>
-              </label>
-              <label class="label-under-small">
-                <textarea class="hidden" name="attr_weapon_whisper_to_hit"></textarea>
-                <select class="select-over-label" name="attr_weapon_whisper_to_hit_select" title="@{repeating_weapon_$X_weapon_whisper_to_hit_select}">
-                  <option value="0" class="matrix-box" selected>Matrix</option>
-                  <option value="1" class="thac0-box">THACO</option>
-                  <option value="2">No</option>
-                </select>
-                <span title="Include '/w gm Hit table'?">/w gm?</span>
               </label>
             </span>
             <!--deprecated: weapon_dmgbonus has been replaced with weapon_attackdmgbonus-->
@@ -10625,50 +10404,8 @@ const macroNormal =
           output.savespells_base = 7;
         }
       }
-      // Druid
-      if (classSelected === 2) {
-        if (levelSelected === 0) {
-          // clog('Need to choose a class level greater than 0 to continue.');
-        } else if (levelSelected < 4) {
-          output.saveparalysispoisondeath_base = 10;
-          output.savepetrificationpolymorph_base = 13;
-          output.saverodsstaveswands_base = 14;
-          output.savebreathweapons_base = 16;
-          output.savespells_base = 15;
-        } else if (levelSelected < 7) {
-          output.saveparalysispoisondeath_base = 9;
-          output.savepetrificationpolymorph_base = 12;
-          output.saverodsstaveswands_base = 13;
-          output.savebreathweapons_base = 15;
-          output.savespells_base = 14;
-        } else if (levelSelected < 10) {
-          output.saveparalysispoisondeath_base = 7;
-          output.savepetrificationpolymorph_base = 10;
-          output.saverodsstaveswands_base = 11;
-          output.savebreathweapons_base = 13;
-          output.savespells_base = 12;
-        } else if (levelSelected < 13) {
-          output.saveparalysispoisondeath_base = 6;
-          output.savepetrificationpolymorph_base = 9;
-          output.saverodsstaveswands_base = 10;
-          output.savebreathweapons_base = 12;
-          output.savespells_base = 11;
-        } else if (levelSelected < 16) {
-          output.saveparalysispoisondeath_base = 5;
-          output.savepetrificationpolymorph_base = 8;
-          output.saverodsstaveswands_base = 9;
-          output.savebreathweapons_base = 11;
-          output.savespells_base = 10;
-        } else if (levelSelected >= 16) {
-          output.saveparalysispoisondeath_base = 5;
-          output.savepetrificationpolymorph_base = 8;
-          output.saverodsstaveswands_base = 9;
-          output.savebreathweapons_base = 11;
-          output.savespells_base = 10;
-        }
-      }
       // Fighter, Paladin, or Ranger or Other 0-lvl Types
-      if (classSelected === 3 || classSelected === 8) {
+      if (classSelected === 4 || classSelected === 5) {
         if (levelSelected === 0) {
           output.saveparalysispoisondeath_base = 16;
           output.savepetrificationpolymorph_base = 17;
@@ -10732,7 +10469,7 @@ const macroNormal =
         }
       }
       // Magic-User or Illusionist
-      if (classSelected === 4) {
+      if (classSelected === 2) {
         if (levelSelected === 0) {
           // clog('Need to choose a class level greater than 0 to continue.');
         } else if (levelSelected < 6) {
@@ -10768,7 +10505,7 @@ const macroNormal =
         }
       }
       // Thief
-      if (classSelected === 5) {
+      if (classSelected === 3) {
         if (levelSelected === 0) {
           // clog('Need to choose a class level greater than 0 to continue.');
         } else if (levelSelected < 5) {
@@ -10782,7 +10519,7 @@ const macroNormal =
           output.savepetrificationpolymorph_base = 11;
           output.saverodsstaveswands_base = 12;
           output.savebreathweapons_base = 15;
-          output.savespells_base = 12;
+          output.savespells_base = 13;
         } else if (levelSelected < 13) {
           output.saveparalysispoisondeath_base = 11;
           output.savepetrificationpolymorph_base = 10;
