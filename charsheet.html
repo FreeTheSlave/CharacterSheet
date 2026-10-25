@@ -284,6 +284,7 @@
         <label>
           <span>LEVEL/XP VALUE:</span>
           <input type="text" class="width-large" name="attr_level_xp_value" title="@{level_xp_value}" value="" placeholder="Nil" />
+          </label>
       </span>
       <label class="inline-label">
         <button type="roll" class="image-link" value="@{whisper_npc} [**LINK**](@{sheet_image_url})" title="Send image to chat."></button>
@@ -2883,8 +2884,8 @@
                 <summary>
                   <span class="material-icons custom-btn-nav toggle-critdamage"></span>
                   <input type="text" class="width-medium" name="attr_weapon_damagesmallmedium" title="@{repeating_weapon_$X_weapon_damagesmallmedium}" value="" placeholder="1d4" />
-                  <button class="text-only hide-as-npc" type="roll" name="roll_weapon_damagesmallmedium_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_roll} | PC Roll" value="@{weapon_damagesmallmedium_macro_text}"><span class="dice-button nowrap">DMG</span></button>
-                  <button class="text-only hide-as-pc" type="roll" name="roll_weapon_damagesmallmedium_npc_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_npc_roll} | NPC Roll" value="@{weapon_damagesmallmedium_macro_npc_text}"><span class="dice-button nowrap">DMG</span></button>
+                  <button class="text-only hide-as-npc" type="roll" name="roll_weapon_damagesmallmedium_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_roll} | PC Roll" value="@{weapon_damagesmallmedium_macro_text}"><span class="dice-button nowrap">Damage</span></button>
+                  <button class="text-only hide-as-pc" type="roll" name="roll_weapon_damagesmallmedium_npc_roll" title="%{repeating_weapon_$X_weapon_damagesmallmedium_npc_roll} | NPC Roll" value="@{weapon_damagesmallmedium_macro_npc_text}"><span class="dice-button nowrap">Damage</span></button>
 
                   <input type="hidden" name="attr_weapon_damagesmallmedium_chat_menu" value="" />
                   <input type="hidden" name="attr_weapon_critdamagesmallmedium_chat_menu" value="" />
@@ -3620,7 +3621,7 @@
                 <textarea class="info-link" wrap="off" name="attr_nwp_link" title="@{repeating_nonweaponproficiencies_$X_nwp_link}" placeholder="https://www.example.com"></textarea>
               </label>
             </span>
-            <textarea class="height-short toggle-macros" name="attr_nwp_macro_text" title="@{repeating_nonweaponproficiencies_$X_nwp_macro_text} | Caution: modifying the macro-text can break the roll.  Deleting the macro-text will safely reset the roll to the sheet's default macro.">@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Non Weapon Proficiency: @{nwp_name}}} {{roll_low=[[ 1d20 + [[ @{nwp_modifier} ]][MOD] + [[ ?{Modifier?|0} ]][MOD] ]]}} {{roll_target=[[ @{nwp_attribute}[ATTR] ]]}} {{mod_applied=[[ ?{Modifier?|0} ]]}} {{nwp_mod_applied=[[ @{nwp_modifier} ]]}} {{link=@{nwp_link}}} {{freetext=@{nwp_short_description} @{nwp_description}}}</textarea>
+            <textarea class="height-short toggle-macros" name="attr_nwp_macro_text" title="@{repeating_nonweaponproficiencies_$X_nwp_macro_text} | Caution: modifying the macro-text can break the roll.  Deleting the macro-text will safely reset the roll to the sheet's default macro.">&{template:attacks} {{color=@{character_name}|color_option}}} {{name=@{character_name}}} {{subtag= Non Weapon Proficiency: @{nwp_name}}} {{roll=[[1d20+@{nwp_attribute}]]}} {{Goal=[[21]]}}</textarea>
           </details>
         </fieldset>
       </div>
@@ -3630,16 +3631,6 @@
     <section class="thief-skills-box">
       <input type="checkbox" class="sect-show" name="attr_thief_skills_info_show" value="1" />
       <div class="header">THIEF SKILLS</div><span class="material-icons"></span>
-      <div class="thief-class section">
-        <label class="inline-label" title="@{autofill_thief} | Let the sheet auto-fill the Base chance when the level selector is changed.">
-          <input type="checkbox" name="attr_autofill_thief" value="1" checked />
-          <h4>Autofill Base:</h4>
-        </label>
-        <label class="thief-level left">
-          <span>Thief Level:</span>
-          <input class="width-small border" type="number" min="0" name="attr_thief_level" value="1" title="@{thief_level}">
-        </label>
-      </div>
       <div class="sect">
         <span class="thief-columns column-header">
           <span>Function</span>
@@ -9981,8 +9972,19 @@
       const abilityClimbwalls = +v.climbwalls_ability_mod || 0;
       const magicClimbwalls = +v.climbwalls_magic || 0;
       const oldSkill = +v.climbwalls || 0;
-      const newSkill = Math.max(0, Math.min(100, float(baseClimbwalls).toFixed(1) + int(racialClimbwalls + abilityClimbwalls + magicClimbwalls)));
-      const macroNormal =
+const newSkill = Math.max(
+  0,
+  Math.min(
+    100,
+    Math.floor(
+      baseClimbwalls +
+      racialClimbwalls +
+      abilityClimbwalls +
+      magicClimbwalls
+    )
+  )
+);
+const macroNormal =
         '@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Climb Walls}} {{roll_low=[[ 1d100 ]]%}} {{roll_target=[[ @{climbwalls} ]]%}}';
       const macroExceptional =
         '@{whisper_pc} &{template:general} {{color=@{color_option}}} {{name=@{character_name}}} {{subtag=Climb Walls}} {{roll_low=[[ 1d100 + [[1d10/10]] ]]%}} {{roll_target=[[ @{climbwalls} ]]%}}';
